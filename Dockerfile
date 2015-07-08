@@ -20,8 +20,6 @@ RUN apt-get update && \
 
 RUN rm -rf /var/www/html && mkdir -p /var/lock/apache2 /var/run/apache2 /var/log/apache2 /var/www/html && chown -R www-data:www-data /var/lock/apache2 /var/run/apache2 /var/log/apache2 /var/www/html
 
-ENV ALLOW_OVERRIDE **False**
-
 # Apache + PHP requires preforking Apache for best results
 RUN a2dismod mpm_event && a2enmod mpm_prefork
 
@@ -29,14 +27,15 @@ RUN mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.dist && rm /etc/apach
 COPY apache2.conf /etc/apache2/apache2.conf
 
 # Add image configuration and scripts
-ADD run.sh /run.sh
+ADD apache2-foreground.sh /apache2-foreground.sh
 RUN chmod 755 /*.sh
 
-# Configure /app folder with sample app
-#RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
+# Add sample welcome page
 ADD sample/ /var/www/html/
 
-EXPOSE 80
-EXPOSE 443
+VOLUME /var/www/html
 WORKDIR /var/www/html
-CMD ["/run.sh"]
+
+EXPOSE 80
+
+CMD ["/apache2-foreground.sh"]
