@@ -43,12 +43,6 @@
 		?>
 	<?php
 	}
-
-	if($_ENV["TUTUM_AUTH"]) {
-		?>
-		<h3>I have Tutum API powers!</h3>
-		<?php
-	}
 	?>
 </body>
 </html>
