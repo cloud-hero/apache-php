@@ -44,5 +44,9 @@
 	<?php
 	}
 	?>
+	<br/><br/>
+	<br/><br/>
+	<h4> For hundreds of ready-to-use docker images, explore the <a href="https://hub.docker.com/explore">DockerHub official repositories list.</a><h4>
+	<h4> For tips on deploying your docker infrastrucurure, check out our latest posts, on the <a href="https://cloudhero.io/blog">CloudHero blog.</a><h4>
 </body>
 </html>
