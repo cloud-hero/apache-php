@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:14.04
 MAINTAINER Andrei Manea <andrei@cloudhero.io>
 
 # Install base packages
